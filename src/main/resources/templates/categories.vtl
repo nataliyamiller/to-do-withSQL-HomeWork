@@ -1,0 +1,10 @@
+<h1>View categories</h1>
+
+#if ($categories.isEmpty())
+  Currently you do not have any categories. Please enter a category
+  <h3><a href="/categories/new">Add a new category</a></h3>
+#else
+  #foreach($category in $categories)
+    <h3><a href="/categories/$category.getId()">$category.getName()</a></h3>
+  #end
+#end
