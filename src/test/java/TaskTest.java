@@ -4,7 +4,15 @@ import static org.junit.Assert.*;
 public class TaskTest {
 
   @Rule
+  public DatabaseRule database = new DatabaseRule();
+
+  @Rule
   public ClearRule clearRule = new ClearRule();
+
+  @Test
+  public void all_emptyAtFirst() {
+    assertEquals(Task.all().size(), 0);
+  }
 
   @Test //Test that we can initiate a Task object
   public void Task_instantiatesCorrectly_true() {

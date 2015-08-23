@@ -35,7 +35,10 @@ public class Task{
   }
 
   public static ArrayList<Task> all() {
-    return instances;
+    String sql = "SELECT id, description FROM Tasks";
+    try(Connection con = DB.sql2o.open()) {
+      return con.createQuery(sql).executeAndFetch(Task.class);
+    }
   }
 
   public static Task find(int id) {
