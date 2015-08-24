@@ -34,6 +34,14 @@ public class TaskTest {
     assertEquals(myTask.getId(), savedTask.getId());
   }
 
+  @Test
+  public void find_findsTaskInDatabase_true() {
+    Task myTask = new Task("Mow the lawn");
+    myTask.save();
+    Task savedTask = Task.find(myTask.getId());
+    assertTrue(myTask.equals(savedTask));
+  }
+
 
   // @Rule
   // public ClearRule clearRule = new ClearRule();

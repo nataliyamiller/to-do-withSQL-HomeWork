@@ -49,6 +49,16 @@ public class Task{
     }
   }
 
+  public static Task find(int id) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM Tasks where id=:id";
+      Task task = con.createQuery(sql)
+                .addParameter("id", id)
+                .executeAndFetchFirst(Task.class);
+                return task;
+    }
+  }
+
   // public static Task find(int id) {
   //   try {
   //     return instances.get(id-1);
